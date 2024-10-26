@@ -1,0 +1,114 @@
+Changing file or directory permissions in Linux can be done using both symbolic (alphabetic) and numeric (octal) representations. Here’s a clear explanation of how to use both methods.
+
+### 1. Understanding Permissions
+
+Before changing permissions, let’s recap the basic permission types:
+
+- **Read (r)**: 4
+- **Write (w)**: 2
+- **Execute (x)**: 1
+
+#### Permission Representation
+
+- **Owner**: The user who owns the file.
+- **Group**: The group associated with the file.
+- **Others**: All other users.
+
+### 2. Symbolic Method (Alphabetic)
+
+In the symbolic method, permissions are changed using letters:
+
+- **r**: Read
+- **w**: Write
+- **x**: Execute
+- **+**: Adds a permission
+- **-**: Removes a permission
+- **=**: Sets exact permissions
+
+#### Syntax
+
+```bash
+chmod [who][+/-/=][permissions] filename
+```
+
+#### Examples
+
+- **Add Execute Permission for Owner**:
+  ```bash
+  chmod u+x filename
+  ```
+  
+- **Remove Write Permission for Group**:
+  ```bash
+  chmod g-w filename
+  ```
+
+- **Set Read and Write Permissions for Others**:
+  ```bash
+  chmod o=rw filename
+  ```
+
+- **Change Permissions for All Users**:
+  ```bash
+  chmod a+rwx filename
+  ```
+
+### 3. Numeric Method (Octal)
+
+In the numeric method, permissions are represented using octal numbers:
+
+- **Read**: 4
+- **Write**: 2
+- **Execute**: 1
+
+You combine these numbers to set the desired permissions.
+
+#### Syntax
+
+```bash
+chmod [permissions] filename
+```
+
+#### Example Permissions
+
+- **777**: Read, write, and execute for owner, group, and others
+- **755**: Read, write, execute for owner; read and execute for group and others
+- **644**: Read and write for owner; read for group and others
+
+#### Examples
+
+- **Set Permissions to 755**:
+  ```bash
+  chmod 755 filename
+  ```
+
+- **Set Permissions to 644**:
+  ```bash
+  chmod 644 filename
+  ```
+
+### 4. Changing Permissions for All Files in a Directory
+
+To change permissions for all files in a directory, you can use the `-R` (recursive) option with both methods.
+
+#### Using Symbolic Method
+
+- **Add Execute Permission for All Files and Directories**:
+  ```bash
+  chmod -R a+x directory_name
+  ```
+
+#### Using Numeric Method
+
+- **Set Permissions to 755 for All Files**:
+  ```bash
+  chmod -R 755 directory_name
+  ```
+
+### Summary
+
+- **Symbolic Method**: Use letters (`u`, `g`, `o`, `+`, `-`, `=`) to modify permissions.
+- **Numeric Method**: Use octal numbers (e.g., `755`, `644`) for direct permission setting.
+- **Recursive Option**: Use `-R` to apply changes to all files within a directory.
+
+Understanding these methods allows you to effectively manage file and directory permissions in Linux!
