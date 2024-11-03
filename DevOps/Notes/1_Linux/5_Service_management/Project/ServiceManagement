@@ -1,0 +1,118 @@
+Absolutely! Here’s a project idea that will help you build practical skills in managing services on a Linux system:
+
+---
+
+## **Project: Setting Up and Managing a Multi-Service Web Server**
+
+### **Objective**
+Set up a basic web server with multiple services, manage their configurations, monitor their status, and ensure they are correctly running and using resources efficiently.
+
+### **Overview**
+In this project, you’ll set up a web server with several services, configure them to work together, monitor them, and practice troubleshooting and resource management.
+
+### **Tools and Services Required**
+- **Nginx or Apache**: To serve web pages.
+- **MySQL or MariaDB**: To manage a database service.
+- **PHP or Python**: For backend logic (optional).
+- **System Monitoring Tools**: `systemctl`, `ps`, `top`, and `htop`.
+- **Task Scheduler**: `cron` jobs to automate service monitoring and reporting.
+
+### **Steps**
+
+#### **1. Set Up the Services**
+   - **Install the Web Server** (e.g., `nginx` or `apache`).
+   - **Install the Database Server** (e.g., `mysql` or `mariadb`).
+   - **Install PHP or Python** (if you want to handle backend logic).
+   
+   Ensure all services are properly installed and start them using `systemctl`.
+
+   ```bash
+   sudo systemctl start nginx
+   sudo systemctl start mysql
+   ```
+
+#### **2. Configure the Services**
+   - Configure each service to serve web pages, connect to the database, and render content.
+   - Set the services to start at boot:
+
+     ```bash
+     sudo systemctl enable nginx
+     sudo systemctl enable mysql
+     ```
+
+   - Create a simple HTML or PHP page that connects to the database to confirm all components are working together.
+
+#### **3. Monitor Service Status**
+   - Use `systemctl` to check the status of each service.
+   - Use `ps` or `top` to monitor their CPU and memory usage:
+
+     ```bash
+     ps -C nginx,mysql -o %cpu,%mem,cmd
+     ```
+
+#### **4. Set Up Resource Monitoring**
+   - Create a `cron` job that monitors the CPU and memory usage of each service every hour.
+   - Store this information in a log file to review performance over time.
+
+   Example `cron` job (to be added in `crontab`):
+
+   ```bash
+   */60 * * * * ps -C nginx,mysql -o %cpu,%mem,cmd >> /home/username/service_monitor.log
+   ```
+
+#### **5. Implement Resource Limits**
+   - Configure limits for CPU and memory usage for each service using `systemd`’s resource control (e.g., `CPUQuota` for CPU limits and `MemoryLimit` for memory).
+   - Edit the service’s `systemd` configuration file:
+
+     ```bash
+     sudo nano /etc/systemd/system/nginx.service.d/override.conf
+     ```
+
+     Add resource constraints, for example:
+
+     ```ini
+     [Service]
+     CPUQuota=50%
+     MemoryLimit=500M
+     ```
+
+   - Restart the service and monitor to ensure the limits are working.
+
+#### **6. Test Failover and Recovery**
+   - **Stop** each service manually and then restart it to see how the system recovers:
+
+     ```bash
+     sudo systemctl stop nginx
+     sudo systemctl start nginx
+     ```
+
+   - Practice using `systemctl` to check for failed services and troubleshoot using log files located in `/var/log`.
+
+#### **7. Automate Restart on Failure**
+   - Configure each service to automatically restart if it fails by modifying its `systemd` settings:
+
+     ```ini
+     [Service]
+     Restart=on-failure
+     RestartSec=5s
+     ```
+
+   - Save and reload the service configurations:
+
+     ```bash
+     sudo systemctl daemon-reload
+     sudo systemctl restart nginx
+     ```
+
+#### **8. Document and Review**
+   - Document each step, configuration, and command you’ve used.
+   - Write down your findings, such as average resource usage, how the system handled failure, and any adjustments needed for smooth operation.
+
+---
+
+### **Outcome**
+By the end of this project, you’ll understand how to:
+- Install and manage services.
+- Monitor and limit service resource usage.
+- Automate responses to service failures.
+- Configure services to work together as part of a web application stack.

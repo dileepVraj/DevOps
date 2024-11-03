@@ -1,0 +1,25 @@
+In Linux, `ps` stands for **Process Status**. It's a command-line utility used to display information about the currently running processes on the system. The `ps` command provides details like the Process ID (PID), terminal associated with the process, CPU usage, memory usage, and the command that started the process.
+
+### Common Usage of `ps`
+
+Some popular options with `ps` include:
+
+1. **Basic Command**:
+   - `ps` without options shows processes related to the current terminal session.
+
+2. **Extended Options**:
+   - `ps -e` or `ps -A`: Lists all processes running on the system.
+   - `ps -f`: Shows a full-format listing with additional details.
+   - `ps aux`: Shows a detailed list of all running processes with columns for CPU and memory usage. The `a` option shows processes for all users, `u` displays the user owning each process, and `x` shows processes not attached to a terminal.
+
+3. **Filtering by Specific Attributes**:
+   - `ps -u [username]`: Lists all processes for a specific user.
+   - `ps -p [PID]`: Shows details about a specific process by PID.
+
+### Example Command and Output
+
+```bash
+ps aux
+```
+
+This command displays an extensive list of all running processes, typically showing columns for the user, PID, CPU usage, memory usage, process start time, and the command.

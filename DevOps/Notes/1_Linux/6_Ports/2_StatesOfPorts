@@ -1,0 +1,40 @@
+Ports can have various states that indicate their current status in terms of network connections. Here are some common port states you might encounter:
+
+### 1. **Listening**
+- **Definition**: The port is open and waiting for incoming connections from clients. 
+- **Example**: A web server listening on port 80 for HTTP requests or port 443 for HTTPS requests.
+
+### 2. **Established**
+- **Definition**: A connection is currently active. Data can be sent and received through the port.
+- **Example**: When you are actively browsing a website, the connection to the web server is in the established state.
+
+### 3. **Closed**
+- **Definition**: The port is not open for connections. It may be configured not to accept connections, or no application is currently using it.
+- **Example**: If you try to connect to a service on a port that is closed, the connection will be refused.
+
+### 4. **Time Wait**
+- **Definition**: The port is in a waiting state after a connection has been closed. This is a brief period during which the system waits to ensure that any delayed packets on the network are properly handled.
+- **Example**: After a TCP connection is closed, the port enters the time wait state to ensure that any remaining packets are discarded.
+
+### 5. **Syn Sent**
+- **Definition**: A connection request has been sent (SYN packet) to another device, and the system is waiting for a response.
+- **Example**: When your computer attempts to connect to a server, it sends a SYN packet to the server, and the port will be in the SYN sent state until the server responds.
+
+### 6. **Syn Received**
+- **Definition**: The local system has received a connection request (SYN packet) and sent a SYN-ACK response back to the client, waiting for the final ACK packet to establish the connection.
+- **Example**: The server is waiting for the client's confirmation to establish a connection.
+
+### 7. **Fin Wait**
+- **Definition**: The port is waiting for a connection termination request from the other party. This can occur after one side has sent a FIN packet to close the connection.
+- **Example**: After one side of a TCP connection has finished sending data, it will initiate a closure, leading to this state.
+
+### 8. **Closed Wait**
+- **Definition**: The port is waiting for the application to acknowledge the closure of the connection. This typically occurs after one side has sent a FIN packet and is waiting for the other side to acknowledge it.
+- **Example**: When the remote server has closed the connection, and your application has not yet fully acknowledged the closure.
+
+### 9. **Last Ack**
+- **Definition**: The port is in the process of closing and waiting for an acknowledgment of the FIN packet it sent.
+- **Example**: After a service has sent a FIN to close the connection, it enters this state until it receives an acknowledgment from the other side.
+
+### Summary
+Each of these states helps in managing how data flows through a network and ensures proper communication between devices. Understanding these states can be particularly useful for troubleshooting network issues and managing services effectively.
