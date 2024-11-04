@@ -1,0 +1,51 @@
+In Linux, "links" are special types of files that allow multiple filenames to refer to the same file data on disk. There are two types of links in Linux: **hard links** and **soft (or symbolic) links**. Each serves different purposes and has different behaviors.
+
+### 1. Hard Links
+
+A hard link is essentially an additional directory entry for a file. It points directly to the inode (a unique identifier for each file on the disk that contains metadata and data location information) of the target file. Hard links allow multiple filenames to reference the same data.
+
+#### Characteristics of Hard Links
+
+- **Same inode**: Hard links share the same inode as the original file, meaning they’re effectively the same file.
+- **File independence**: If you delete one hard link, the data remains accessible via other hard links pointing to it. The file is only truly deleted when all hard links to it are removed.
+- **Restrictions**: Hard links cannot link to directories (to avoid creating loops in the filesystem) and cannot span across different filesystems or partitions.
+- **No extra storage**: Creating a hard link does not duplicate the file; it simply adds another entry pointing to the existing data.
+
+#### Example
+
+To create a hard link:
+```bash
+ln original_file hard_link
+```
+
+Now, both `original_file` and `hard_link` point to the same data on disk. Changes made to one will reflect in the other.
+
+### 2. Soft (Symbolic) Links
+
+A symbolic link, or symlink, is a pointer to another file or directory. Unlike hard links, a symlink does not point to the file’s inode but to its pathname. Symlinks work like shortcuts and can point to files or directories across different filesystems.
+
+#### Characteristics of Symbolic Links
+
+- **Different inode**: Symlinks have their own inodes and are distinct files that just point to the target’s path.
+- **Can link directories**: Unlike hard links, symlinks can point to directories.
+- **Flexible**: They can span across different filesystems or partitions.
+- **Broken links**: If the target file is deleted or moved, a symlink becomes a "broken link," as it points to a nonexistent path.
+
+#### Example
+
+To create a symbolic link:
+```bash
+ln -s original_file symlink
+```
+
+Now, `symlink` points to `original_file`, but unlike a hard link, it’s merely a path reference. If `original_file` is deleted, `symlink` becomes broken.
+
+### Practical Use of Links in DevOps
+
+For DevOps engineers, links are useful for:
+
+- **Configuring software**: Many applications rely on symlinks to reference configuration files across different directories.
+- **Shared resources**: Links allow users to access the same file under different names or locations, helping organize resources without duplicating data.
+- **Version control in deployments**: Symlinks are commonly used to manage different versions of software, with a symlink pointing to the currently active version.
+  
+By understanding how to use links, you can manage files and configurations more efficiently across projects and environments in a Linux system.

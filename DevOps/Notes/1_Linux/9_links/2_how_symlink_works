@@ -1,0 +1,36 @@
+When you create a symbolic link (symlink) to a directory in Linux, the symlink essentially acts as a "shortcut" to that directory. Any operations you perform on files through the symlink affect the original files because the symlink points directly to the original directory’s path.
+
+Here’s a breakdown of why the file was deleted in both the symlink and the original directory:
+
+1. **Symlink Points to Original Directory Path**: 
+   - A symbolic link to a directory does not create a copy of that directory; it simply creates a pointer to the directory’s path.
+   - When you navigate through the symlink and make changes (like deleting a file), you’re effectively interacting with the original directory as if you were directly inside it.
+
+2. **Deleting a File via Symlink**:
+   - When you delete a file while accessing it through the symlink, the system interprets this as an instruction to delete the file within the actual directory.
+   - Since both the symlink and the directory are references to the same location, the deletion action removes the file from the original directory itself.
+
+3. **Consistency Across Views**:
+   - Both the symlink and the actual directory show the same contents because they refer to the same physical storage.
+   - Any modification (addition, deletion, or modification of files) through either the original directory or the symlink will reflect in the other.
+
+### Practical Example
+
+Let’s say you have a directory called `/original_directory` with 4 files. If you create a symlink to it like this:
+
+```bash
+ln -s /original_directory /symlink_to_directory
+```
+
+Now, if you go into `/symlink_to_directory` and delete a file:
+
+```bash
+cd /symlink_to_directory
+rm file1.txt
+```
+
+This command removes `file1.txt` from `/original_directory` as well, because the symlink is simply pointing to the actual location. 
+
+### Summary
+
+A symlink doesn’t duplicate or copy files; it merely redirects operations to the original target. So, any action you take through the symlink applies directly to the original directory and its contents.

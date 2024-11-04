@@ -1,0 +1,47 @@
+An **inode** (index node) in Linux and other Unix-based filesystems is a data structure that stores metadata about a file or directory. Every file and directory on a filesystem has an inode that uniquely identifies it and holds critical information about it, though it does not contain the actual file data or its name. The inode number is an index into a table of inodes kept by the filesystem, which maps to the file’s metadata.
+
+### What an Inode Contains
+
+An inode stores metadata for a file or directory, such as:
+
+- **File Type**: Whether it’s a regular file, directory, symbolic link, etc.
+- **Permissions**: Read, write, and execute permissions for the owner, group, and others.
+- **Ownership**: User ID (UID) and group ID (GID) of the file owner and group.
+- **File Size**: The size of the file in bytes.
+- **Timestamps**: Including creation time, last modification time, and last access time.
+- **Link Count**: The number of hard links to the file, indicating how many directory entries reference this inode.
+- **Pointers to Data Blocks**: Locations on the disk where the actual data blocks of the file are stored.
+
+### What an Inode Does Not Contain
+
+- **File Name**: The inode doesn’t store the name of the file. Instead, directory entries map filenames to inode numbers.
+- **Actual File Data**: The inode points to the blocks on disk where the file's contents are stored, but the data itself is stored in separate data blocks.
+
+### Example: How Inodes Work
+
+Let’s say you create a file `file1.txt`. When this file is created:
+
+1. **Inode Creation**: The filesystem assigns an inode to `file1.txt` with a unique inode number.
+2. **Metadata Storage**: All metadata (permissions, timestamps, etc.) for `file1.txt` is stored in this inode.
+3. **Directory Entry**: The directory (like `/home/user/documents`) stores a mapping between the filename (`file1.txt`) and its inode number.
+
+If you create a **hard link** to `file1.txt`:
+
+```bash
+ln file1.txt file1_hardlink.txt
+```
+
+Now, both `file1.txt` and `file1_hardlink.txt` point to the same inode. Any changes made to one will reflect in the other because they share the same inode and thus reference the same data.
+
+### Significance of Inodes
+
+Inodes provide a way for the filesystem to manage files independently of filenames, allowing:
+
+- **Efficient Storage Management**: Each file is represented uniquely by an inode, enabling efficient access and updates.
+- **Multiple Hard Links**: Multiple filenames can point to the same inode, allowing for multiple directory entries to share the same file data without duplication.
+- **Fast Lookup by Metadata**: The filesystem can quickly access file metadata by looking up the inode, making operations like listing file attributes efficient.
+
+For a DevOps engineer, understanding inodes is essential for managing storage, especially when dealing with disk space issues, as inodes have a limited count per filesystem (inode exhaustion can prevent new files from being created even if space remains).
+
+To verify I node count use 'df -i' command.
+
