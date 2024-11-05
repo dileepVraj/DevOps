@@ -1,0 +1,32 @@
+Let’s imagine you have a big box of toys, and you want to keep things organized so you can find your toys easily. Think of **server blocks** in NGINX like different sections in that toy box where you put different kinds of toys.
+
+### Example: The Toy Box
+
+1. **The Toy Box**: This is like your NGINX server, where all the toys (websites) are kept.
+
+2. **Sections in the Box**: 
+   - You have a section for **cars**, another for **dolls**, and one for **blocks**. Each section is like a **server block** where you can keep all the toys that belong to that type.
+
+3. **Labels on Sections**: 
+   - You put a label on each section: “Cars,” “Dolls,” and “Blocks.” This is like the **server_name** in NGINX, which tells the server which website to serve when someone asks for it.
+
+4. **Finding Toys**:
+   - When a friend comes over and asks for a toy car, you can quickly go to the “Cars” section and find it. In NGINX, when someone types in a website address (like **example.com**), it looks at the server blocks to find the right one to show them.
+
+5. **Special Rules**: 
+   - Maybe you decide that all cars need to be put back in the box after playing. You can write a rule for that! Similarly, in NGINX, you can set rules for each server block, like what to do if someone tries to visit a page that doesn’t exist.
+
+### Real-Time Example
+
+Imagine you have a website for your toy store and another for your art gallery. 
+
+- For the **toy store**, you have a server block that tells NGINX to listen for requests to **toystore.com**. 
+- For the **art gallery**, you have another server block that listens for **artgallery.com**. 
+
+When someone types **toystore.com**, NGINX knows to look in the toy store section and show them all the toys. If they type **artgallery.com**, it goes to the art gallery section and shows them all the paintings.
+
+### Summary
+
+So, **server blocks** help you keep different websites organized and make sure the right one shows up when someone visits. It’s like having a neatly arranged toy box where you can easily find what you’re looking for!
+
+For more information on how server blocks work in NGINX, you can check out this [guide from DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-set-up-nginx-server-blocks-using-ubuntu).
