@@ -1,0 +1,29 @@
+To list all running services in Linux, you can use the `systemctl` command (if your system uses `systemd`), which is commonly used in modern Linux distributions.
+
+### Command to List All Active Services
+
+```bash
+systemctl list-units --type=service --state=running
+```
+
+This command will display all currently running (active) services along with their statuses.
+
+### Explanation
+- `--type=service`: Filters to show only services.
+- `--state=running`: Filters to show only active, running services.
+
+### Alternative: Viewing All Services (Running and Stopped)
+
+If you want to see all services (not just the running ones), you can use:
+
+```bash
+systemctl list-units --type=service
+```
+
+Or, for a summary including failed services:
+
+```bash
+systemctl --type=service --all
+```
+
+These commands will show services that are running, stopped, or in any other state.

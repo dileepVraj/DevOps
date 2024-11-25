@@ -1,0 +1,24 @@
+1.Create a user.
+
+2.Create a group.
+
+3.Rename user.
+
+4.Rename group.
+
+5.Add user to a group.
+
+6.Add user to multiple groups.
+
+7.Delete user from a group.
+
+8.Change primary group of a user.
+
+9.Change ownership and group of a file / directory.
+
+10.Change ownership directory and all files in a directory.
+
+11.Change permissions of a file / directory.
+
+12.Change permissions of a directory and all files in a directory.
+

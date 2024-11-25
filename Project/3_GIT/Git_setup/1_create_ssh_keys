@@ -1,0 +1,6 @@
+If you have one no issues, if not create a new pair of ssh keys in your local directory.
+
+Navigate to preferred directory where you want to create keys.
+
+Command: ssh-keygen -i <keyname> 
+

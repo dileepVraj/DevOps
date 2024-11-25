@@ -1,0 +1,43 @@
+Project: Process Management Automation
+Objective:
+To practice automating and managing processes on a Linux system, simulating the daily tasks of a DevOps engineer.
+
+Tasks:
+Monitor Running Processes:
+
+Write a script to continuously monitor and log active processes using ps and top.
+
+Set up alerts for high CPU or memory usage.
+
+Automate Process Control:
+
+Create a script to start, stop, and restart services automatically.
+
+Use cron jobs to schedule tasks and manage routine processes.
+
+Handle Process Failures:
+
+Implement a watchdog script to detect and restart failed processes.
+
+Use tools like supervisord to manage the lifecycle of critical services.
+
+Log and Analyze Processes:
+
+Set up logging for process activities and analyze logs to identify patterns or issues.
+
+Create dashboards using tools like Grafana to visualize process metrics.
+
+Document the Process:
+
+Maintain detailed documentation for all scripts and tools used.
+
+Include step-by-step guides for setting up and using the process management tools.
+
+Skills Practiced:
+Automation (scripting, cron jobs)
+
+Monitoring (ps, top, logging)
+
+Fault Tolerance (watchdog scripts, supervisord)
+
+Documentation

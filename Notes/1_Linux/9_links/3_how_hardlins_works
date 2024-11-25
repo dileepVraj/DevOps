@@ -1,0 +1,35 @@
+When you create a **hard link** to a file in Linux, both the original file and the hard link point to the same inode. The inode is a unique identifier for the file on the disk, containing metadata about the file and its data blocks. Since both the hard link and the original file refer to the same inode, any changes made to one are reflected in the other.
+
+### How It Works
+
+1. **Single Inode, Multiple References**:
+   - A hard link doesn’t create a duplicate file; it simply creates another name for the same file, both pointing to the same inode.
+   - As both the original file and the hard link share the same inode, they refer to the same physical data on the disk.
+
+2. **Interchangeable Access**:
+   - When you open, modify, or save content through either the hard link or the original file, you’re accessing the same data blocks on the disk.
+   - Changes made through either name (original file or hard link) directly affect the same data, so both filenames reflect the modification.
+
+3. **File Deletion and Persistence**:
+   - If you delete the original file, the data isn’t actually removed from disk because the hard link still exists, referencing the same inode.
+   - The file’s data will only be deleted when all hard links to the inode (including the original filename) are removed.
+
+### Example
+
+Suppose you have a file `file1.txt` and you create a hard link to it called `file1_hardlink.txt`:
+
+```bash
+ln file1.txt file1_hardlink.txt
+```
+
+Now, both `file1.txt` and `file1_hardlink.txt` refer to the same data on disk. If you:
+
+```bash
+echo "New content" >> file1_hardlink.txt
+```
+
+The changes will appear in both `file1.txt` and `file1_hardlink.txt` because they’re just different names for the same underlying data.
+
+### Why This Happens
+
+Hard links exist to provide multiple references to the same file data without creating duplicate copies, making it efficient in terms of storage and useful for file organization and data redundancy.

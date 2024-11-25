@@ -1,0 +1,105 @@
+Data streams in Linux refer to the flow of data between commands or files in a structured manner, allowing data to be passed, manipulated, or redirected. Linux uses three primary data streams:
+
+1. **Standard Input (stdin)**: The stream where input is read from, typically the keyboard. It has a file descriptor of **0**.
+2. **Standard Output (stdout)**: The stream where output is written to, generally the screen. It has a file descriptor of **1**.
+3. **Standard Error (stderr)**: The stream where error messages are written. It also goes to the screen by default and has a file descriptor of **2**.
+
+Each of these streams can be redirected to files, other commands, or other destinations as needed.
+
+### Practical Examples and Commands
+
+#### 1. Standard Input (stdin)
+
+Standard input is often used with commands that take user input. The keyboard is the default stdin, but we can redirect stdin from a file or another command.
+
+**Example 1**: Using stdin with `cat`
+```bash
+cat 
+```
+This command waits for user input from the keyboard. You can type something, and `cat` will output it to the screen.
+
+**Example 2**: Redirecting stdin from a file
+```bash
+cat < file.txt
+```
+In this example, `cat` reads input from `file.txt` instead of the keyboard.
+
+#### 2. Standard Output (stdout)
+
+Standard output is where the command sends its normal output. By default, this goes to the terminal, but it can be redirected to a file or used as input for another command.
+
+**Example 1**: Redirecting stdout to a file
+```bash
+ls > output.txt
+```
+Here, the output of `ls` is redirected to a file named `output.txt`. If the file doesn’t exist, it’s created. If it does exist, it’s overwritten.
+
+**Example 2**: Appending stdout to a file
+```bash
+echo "Hello" >> output.txt
+```
+This command appends "Hello" to `output.txt` instead of overwriting it.
+
+#### 3. Standard Error (stderr)
+
+Standard error is where error messages are sent. You can also redirect stderr to a file or combine it with stdout.
+
+**Example 1**: Redirecting stderr to a file
+```bash
+ls /nonexistent_directory 2> error.log
+```
+Since `/nonexistent_directory` doesn’t exist, this command generates an error. The `2>` redirects stderr (file descriptor 2) to `error.log`.
+
+**Example 2**: Redirecting both stdout and stderr to the same file
+```bash
+ls /existent_directory /nonexistent_directory > all_output.log 2>&1
+```
+This command redirects both stdout and stderr to `all_output.log`. Here, `2>&1` means "send stderr (2) to the same place as stdout (1)."
+
+#### 4. Piping Data Between Commands
+
+The **pipe (`|`)** symbol allows you to take the stdout of one command and use it as the stdin of another. This is a common technique in Linux to create command chains.
+
+**Example 1**: Piping `ls` output to `grep`
+```bash
+ls /etc | grep "ssh"
+```
+This command lists the contents of `/etc`, and only the lines containing "ssh" are shown, thanks to the `grep` command.
+
+**Example 2**: Using `wc -l` to count lines in the output
+```bash
+ps aux | wc -l
+```
+Here, the output of `ps aux` (which lists all running processes) is piped to `wc -l` (word count with lines only), which then counts the number of processes.
+
+#### 5. Practical Example: Redirecting Output and Errors
+
+Let's say you’re running a script to back up your home directory. You want to log successful output to one file and any errors to another.
+
+```bash
+tar -czf backup.tar.gz /home/username > backup.log 2> error.log
+```
+In this example:
+- `backup.log` records all successful actions (stdout).
+- `error.log` records any issues (stderr), such as permissions issues or missing files.
+
+#### 6. Using `/dev/null` to Discard Output
+
+`/dev/null` is a special file that discards anything written to it. This can be useful for ignoring unnecessary output or errors.
+
+**Example**: Suppressing stdout and stderr
+```bash
+command > /dev/null 2>&1
+```
+Here, both stdout and stderr are sent to `/dev/null`, effectively discarding all output from `command`.
+
+### Summary of Key Redirections and Piping
+
+- **`>`**: Redirects stdout to a file, overwriting it.
+- **`>>`**: Redirects stdout to a file, appending to it.
+- **`2>`**: Redirects stderr to a file.
+- **`2>&1`**: Combines stderr and stdout.
+- **`|`**: Pipes stdout of one command to stdin of another.
+- **`<`**: Redirects stdin from a file.
+
+These tools allow you to control and manage data streams effectively, which is especially useful in automation, logging, error handling, and command chaining in Linux environments.

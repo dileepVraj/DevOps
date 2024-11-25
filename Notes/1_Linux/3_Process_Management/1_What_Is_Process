@@ -1,0 +1,30 @@
+In Linux, a *process* is essentially an instance of a running program. Whenever you execute a command or run a program, the system creates a process for it. Each process is assigned a unique Process ID (PID), and it can be in one of several states, such as running, sleeping, or stopped. Linux uses processes to manage system tasks and resources efficiently.
+
+### Key Aspects of Linux Processes
+
+1. **Parent and Child Processes**:
+   - Every process in Linux is created by another process, forming a hierarchy.
+   - The *init* process (PID 1) is the root of all processes, starting other processes during boot-up.
+
+2. **Process States**:
+   - Common process states include:
+     - **Running**: The process is actively running or ready to run.
+     - **Sleeping**: The process is waiting for a resource or event to complete.
+     - **Stopped**: The process has been paused (often via signals like SIGSTOP).
+     - **Zombie**: A process that has completed execution but still has an entry in the process table.
+
+3. **Process Control Commands**:
+   - You can manage processes using commands like:
+     - `ps`: Shows running processes.
+     - `top` or `htop`: Provides a real-time view of running processes.
+     - `kill` and `pkill`: Terminates processes based on PID or other criteria.
+     - `nice` and `renice`: Adjust process priority.
+
+4. **Process Priority**:
+   - Linux allows you to adjust the priority of processes. Lower values mean higher priority, allowing critical processes to get more CPU time.
+
+5. **Types of Processes**:
+   - **Foreground Process**: Runs in the terminal and takes input from the user.
+   - **Background Process**: Runs independently of the terminal, allowing the user to continue using the terminal for other commands.
+
+Processes are fundamental to the Linux operating system, as they enable multitasking by allowing multiple programs to run simultaneously.

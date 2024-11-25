@@ -1,0 +1,19 @@
+**Monolithic architecture** is a traditional software design model where an entire application is built as a single, unified unit. In a monolithic system, all components, such as the user interface, application logic, and data handling, are tightly integrated into one cohesive codebase. This type of architecture can be easier to develop initially because it’s simpler to manage and deploy as a single entity. However, as applications grow, monolithic structures can become difficult to scale and maintain, making it challenging to introduce updates without impacting the entire system.
+
+### Example of Monolithic Architecture:
+Consider an **e-commerce application** in a monolithic architecture. The application would have a single codebase that includes:
+- **User Interface (UI)**: For customers to browse products, view details, and add items to the cart.
+- **Business Logic**: Handles inventory, pricing, and checkout calculations.
+- **Data Management**: Manages product information, customer data, and order history.
+
+All these elements are interdependent and reside within a single code repository. If you want to update the checkout functionality, you need to redeploy the entire application, which could affect other parts of the system even if they were not intended for updates.
+
+### Advantages of Monolithic Architecture:
+- **Simpler Development and Deployment**: Easier to set up initially and deploy as a single unit.
+- **Performance**: Often faster for small applications due to fewer calls between components.
+  
+### Disadvantages:
+- **Scalability Issues**: Scaling a monolithic app can mean scaling the entire application, which is less efficient.
+- **Maintenance Challenges**: As applications grow, they become harder to maintain, and adding new features may risk breaking existing ones.
+
+Many legacy applications and some current systems, such as **banking applications** or **ERP systems**, often use monolithic architectures. While monolithic designs are sometimes chosen for simplicity, modern applications often shift towards **microservices architecture** to improve scalability and flexibility.

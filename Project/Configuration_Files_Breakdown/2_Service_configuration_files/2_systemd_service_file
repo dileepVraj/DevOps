@@ -1,0 +1,53 @@
+[Unit]
+Description = Catalogue Service
+
+[Service]
+User=roboshop
+Environment=MONGO=true
+Environment=MONGO_URL="mongodb://<MONGODB-SERVER-IPADDRESS>:27017/catalogue"
+ExecStart=/bin/node /app/server.js
+SyslogIdentifier=catalogue
+
+[Install]
+WantedBy=multi-user.target
+
+
+--------------------------------------------
+
+This is a **systemd unit file** for managing the **Catalogue Service** on a Linux system. Systemd unit files define and configure system services, allowing them to be started, stopped, and managed consistently.
+
+Here's a breakdown of each section in this file:
+
+### [Unit] Section
+- **Description=Catalogue Service**: Provides a short description of the service, in this case, "Catalogue Service." It helps identify the service's purpose in the system logs and tools.
+
+### [Service] Section
+- **User=roboshop**: Specifies that the service should run under the user account `roboshop`, which can help limit permissions.
+- **Environment=MONGO=true** and **Environment=MONGO_URL=...**: These lines set environment variables. `MONGO=true` indicates that MongoDB should be used, and `MONGO_URL` provides the connection string to MongoDB, using the IP address of the MongoDB server.
+- **ExecStart=/bin/node /app/server.js**: Defines the command to start the service, which in this case runs a Node.js application (`server.js`) located in `/app`.
+- **SyslogIdentifier=catalogue**: Sets an identifier for log entries, making it easier to filter logs related to this service.
+
+### [Install] Section
+- **WantedBy=multi-user.target**: Ensures that this service is started in the multi-user mode, which is commonly used for non-graphical, networked services in Linux.
+
+### How to Use:
+To manage this service, you would place this file (e.g., named `catalogue.service`) in `/etc/systemd/system/`. Commands to start, stop, and enable the service are as follows:
+```bash
+sudo systemctl start catalogue
+sudo systemctl stop catalogue
+sudo systemctl enable catalogue
+```
+
+This setup is common for Node.js applications in environments that require MongoDB, helping ensure the application runs consistently and with proper configuration on each startup.
+
+-------------------
+
+This type of file is called a **systemd service unit file**. It is a configuration file used by **systemd**, which is the init system and service manager for many Linux distributions. This file defines how a particular service (in this case, the "Catalogue Service") should be started, stopped, and managed.
+
+In Linux, service unit files are typically placed in `/etc/systemd/system/` or `/lib/systemd/system/` and are used to define settings such as:
+- The command to start the service (`ExecStart`),
+- Environment variables specific to the service (`Environment`),
+- The user under which the service should run (`User`),
+- Logging identifiers and descriptions to help with service management.
+
+Service unit files enable administrators to automate and control services effectively, ensuring they start with the correct configurations on system boot or during runtime.
