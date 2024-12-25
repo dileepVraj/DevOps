@@ -1,0 +1,25 @@
+What is shell?
+
+Linux systems has both CLI and GUI interfaces, when we work with Linux specially in IT we mostly
+work with CLI, because most servers we work with in our work environment won't really have GUI.
+
+The text based command line interface that helps to run commands to interact with operating system is called the Linux shell.
+
+There are different types of shells:
+
+1. Bourne shell (sh shell) older
+2. C shell (csh or tcsh) older
+3. Z shell (zsh)
+4. Bourne again shell(bash) latest shell.
+
+we can see which shell we are on by printing the value of environment variable 'SHELL' using echo
+$SHELL command.
+
+Borune again shell: This is latest and advance shell which allows us to perform arthimitic operations, conditionals, arrays etc..
+
+
+
+
+
+
+

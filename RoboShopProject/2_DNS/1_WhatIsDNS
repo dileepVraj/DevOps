@@ -1,0 +1,30 @@
+DNS (Domain Name System) is like the internet's phone book. It translates human-friendly domain 
+names (e.g., example.com) into IP addresses that computers use to identify each other on the 
+network. 🌐📖
+
+
+
+How Domain name resolve to IP address?
+
+
+You've got the basics down pretty well! Just a few tweaks to make it even clearer:
+
+1. **Browser Cache:** When a user enters a domain name in the browser, the browser first checks its own cache for the IP address. If found, it forwards the request to the corresponding server.
+
+2. **Operating System Cache:** If the IP address isn't in the browser cache, the browser checks the operating system's cache. If found, it retrieves the IP address and forwards the request to the server.
+
+3. **Resolver (ISP) Cache:** If the IP address isn't in the OS cache, the browser sends a query to the resolver server (usually provided by the ISP). The resolver server checks its own cache.
+
+4. **Root Servers:** If the IP address isn't in the resolver's cache, the resolver server queries the root servers. The root servers direct the query to the appropriate Top-Level Domain (TLD) servers.
+
+5. **TLD Servers:** The TLD servers then direct the query to the appropriate authoritative name servers.
+
+6. **Authoritative Name Servers:** The authoritative name servers finally provide the IP address associated with the domain name.
+
+7. **Browser Request:** The IP address is returned to the resolver, then to the browser, and the browser forwards the request to the server hosting the website.
+
+So, just to clarify, each step involves checking the cache at different levels, and if not found, the query moves up the hierarchy until the IP address is resolved. 
+
+You did a great job! Any more tech questions or topics you're curious about? 😊
+
+

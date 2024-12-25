@@ -1,0 +1,241 @@
+Echo: echo is a command is used to print a line of text to the terminal.
+The word we enter after echo command will be printed to the terminal as simple as that.
+
+Ex: echo hello -> prints hello to the console or terminal.
+
+
+-------------------------------------------------------------------------------------------------
+ls(list): 
+
+The ls command in Unix and Unix-like operating systems, including Linux, stands for "list". It is used to list the contents of directories. By default, it shows the names of files and directories in the current directory. Here's how you might use it:
+
+Basic Usage: ls
+
+Lists all files and directories in the current directory.
+
+Detailed View: ls -l
+
+Lists files in a detailed format, showing permissions, number of links, owner, group, size, and timestamp.
+
+Including Hidden Files: ls -a
+
+Lists all files, including hidden files (those that start with a dot .).
+
+-------------------------------------------------------------------------------------------------
+
+3. cd(change directory): 
+
+The `cd` command in Unix and Unix-like operating systems, including Linux, stands for **"change directory"**. It is used to navigate between directories in the file system. Here are some common usages of the `cd` command:
+
+### Basic Usages:
+- **Change to a Directory**:
+  ```sh
+  cd directory_name
+  ```
+  Moves you to the specified directory.
+
+- **Change to the Parent Directory**:
+  ```sh
+  cd ..
+  ```
+  Moves you up one level in the directory hierarchy.
+
+- **Change to the Home Directory**:
+  ```sh
+  cd
+  ```
+  or
+  ```sh
+  cd ~
+  ```
+  Moves you to your home directory.
+
+- **Change to the Root Directory**:
+  ```sh
+  cd /
+  ```
+  Moves you to the root directory.
+
+- **Change to a Specific Path**:
+  ```sh
+  cd /path/to/directory
+  ```
+  Moves you to the directory specified by the path.
+
+- **Return to the Previous Directory**:
+  ```sh
+  cd -
+  ```
+  Takes you back to the directory you were in before the current one.
+
+### Example:
+If you are in `/home/user/documents` and want to move to a subdirectory called `projects`, you would use:
+```sh
+cd projects
+```
+-------------------------------------------------------------------------------------------------
+
+4. pwd(present working directory): 
+
+The `pwd` command stands for **"print working directory"**. It is used in Unix and Unix-like operating systems, including Linux, to display the current working directory.
+
+### Usage:
+- **Basic Command**:
+  ```sh
+  pwd
+  ```
+  When you run this command, it will output the full path of the directory you are currently in.
+
+### Example:
+If your current working directory is `/home/user/documents`, running `pwd` will return:
+```sh
+/home/user/documents
+```
+
+This command is handy to confirm where you are in the directory structure, especially when navigating through multiple directories.
+
+-------------------------------------------------------------------------------------------------
+
+-p option with mkdir:
+
+The `-p` flag with the `mkdir` command is used to create parent directories as needed. If the specified directory's parent directories do not exist, this option creates them along with the specified directory. 
+
+### Usage:
+```sh
+mkdir -p /path/to/directory
+```
+
+### Example:
+If you want to create a directory structure like `/home/user/documents/projects` and `documents` does not exist, using the `-p` flag will create both `documents` and `projects`:
+```sh
+mkdir -p /home/user/documents/projects
+```
+
+Without the `-p` flag, you would need to create each directory level individually, ensuring that each parent directory exists before creating a child directory.
+-------------------------------------------------------------------------------------------------
+
+5. rm(remove):
+
+The `rm` command in Unix and Unix-like operating systems, including Linux, is used to remove files or directories from the file system. Here are some common usages and options:
+
+### Basic Usage
+- **Remove a File**:
+  ```sh
+  rm filename
+  ```
+  This command deletes the specified file.
+
+### Options
+- **Force Removal**:
+  ```sh
+  rm -f filename
+  ```
+  Forcefully removes the file without prompting for confirmation.
+
+- **Remove a Directory**:
+  ```sh
+  rm -r directoryname
+  ```
+  Recursively removes a directory and its contents.
+
+- **Verbose Mode**:
+  ```sh
+  rm -v filename
+  ```
+  Shows what the command is doing (useful for understanding what files are being removed).
+
+- **Interactive Mode**:
+  ```sh
+  rm -i filename
+  ```
+  Prompts for confirmation before each removal.
+
+- **Combine Options**:
+  ```sh
+  rm -rf directoryname
+  ```
+  Forcefully and recursively removes a directory and all its contents without any prompts.
+
+### Example:
+If you want to remove a directory named `old_data` and all its contents forcefully and without confirmation, you would use:
+```sh
+rm -rf old_data
+```
+
+### Important Note:
+Be cautious when using the `rm` command, especially with options like `-r` and `-f`, as it can permanently delete files and directories.
+
+-------------------------------------------------------------------------------------------------
+
+6. cp -r
+
+The `cp` command in Unix and Unix-like operating systems, including Linux, is used to copy files and directories. Here are some common usages and options:
+
+### Basic Usage
+- **Copy a File**:
+  ```sh
+  cp source_file destination_file
+  ```
+  This command copies the file from the source path to the destination path.
+
+### Options
+- **Copy with Verbose Mode**:
+  ```sh
+  cp -v source_file destination_file
+  ```
+  Shows what the command is doing (useful for seeing the progress and details of the copy operation).
+
+- **Copy Multiple Files to a Directory**:
+  ```sh
+  cp file1 file2 file3 /path/to/destination_directory
+  ```
+  Copies multiple files to the specified directory.
+
+- **Recursive Copy for Directories**:
+  ```sh
+  cp -r source_directory destination_directory
+  ```
+  Copies the entire directory and its contents to the specified destination.
+
+- **Interactive Mode**:
+  ```sh
+  cp -i source_file destination_file
+  ```
+  Prompts for confirmation before overwriting an existing file.
+
+- **Preserve Attributes**:
+  ```sh
+  cp -p source_file destination_file
+  ```
+  Preserves the file attributes such as mode, ownership, and timestamps.
+
+### Example:
+If you want to copy a directory named `project` and all its contents to a backup directory, you would use:
+```sh
+cp -r project /path/to/backup
+```
+
+This command ensures that the `project` directory and everything inside it is copied to the backup directory.
+
+-------------------------------------------------------------------------------------------------
+
+7. touch
+
+-----
+
+cat > file_name
+
+-----
+
+cat file_name
+
+------
+
+cp 
+
+------
+
+mv
+
+-----
+
