@@ -23,9 +23,9 @@ function validateAction(){
 
 function validateToUser(){
     if [ $(id -u) -ne 0 ]; then
-    echo "$RedColor This user didn't have root user privilages, please try with user with root privilages $ResetColor"
+    echo -e "$RedColor This user didn't have root user privilages, please try with user with root privilages $ResetColor"
     else
-        echo "$GreenColor This user is root user, good to go $ResetColor"
+        echo -e "$GreenColor This user is root user, good to go $ResetColor"
     fi
 }
 
