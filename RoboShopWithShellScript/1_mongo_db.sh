@@ -25,7 +25,7 @@ systemctl start mongod >> $LogFile
 validateAction $? "Starting mongodb"
 
 # Modifying localhost IP addess 127.0.0.1 to 0.0.0.0.
-sed -i 's/127.0.0.1/0.0.0.0/g' /et/mongod.conf
+sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf
 validateAction $? "Modifying local host IP to 0.0.0.0"
 
 # Restarting mongodb.
