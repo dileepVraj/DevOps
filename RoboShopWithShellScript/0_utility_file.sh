@@ -2,8 +2,7 @@
 
 
 
-# Time stamp
-TimeStamp=$(date +%F-%H-%M-%S)
+
 
 # colours
 GreenColor="\e[5;42m"
@@ -15,9 +14,9 @@ ResetColor="\e[0m"
 
 function validateAction(){
     if [ $1 -ne 0 ]; then
-    echo -e "$RedColor $2 installation is failed $ResetColor"
+    echo -e "$RedColor $2 is failed $ResetColor"
     else 
-        echo -e "$GreenColor $2 installation is success $ResetColor"
+        echo -e "$GreenColor $2 is success $ResetColor"
     fi
 }
 
