@@ -15,6 +15,7 @@ ResetColor="\e[0m"
 function validateAction(){
     if [ $1 -ne 0 ]; then
     echo -e "$RedColor $2 is failed $ResetColor"
+    exit 1
     else 
         echo -e "$GreenColor $2 is success $ResetColor"
     fi

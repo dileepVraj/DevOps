@@ -9,7 +9,7 @@ validateToUser
 
 
 # Copying mongo.repo confi to '/etc/yum.repos.d' directory.
-cp mongo.repo /etc/yum.repos.d/mong.repo
+cp /home/DevOps/RoboShopWithShellScript/RepoFiles/mongo.repo /etc/yum.repos.d/mongo.repo
 validateAction $? "Copying mongo.repo file "
 
 # Installing mongodb
