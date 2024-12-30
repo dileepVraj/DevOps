@@ -28,7 +28,7 @@ addUser roboshop >> $LogFile
 
 # creating /app directory.
 verifyAndCreateDirectory "/app"
-validateAction $? "Creating /app directory"
+# validateAction $? "Creating /app directory"
 
 # Downloading appliaction code.
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip >> $LogFile
