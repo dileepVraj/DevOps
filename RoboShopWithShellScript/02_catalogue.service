@@ -46,4 +46,4 @@ npm install
 validateAction $? "installing node package manager"
 
 # copying catalogue.service to /etc/systemd/system/ directory.
-cp "/home/DevOps/
+cp "/home/DevOps/RoboShopWithShellScript/ServiceFiles/catalogue.sh" "/etc/systemd/system/catalogue.service
