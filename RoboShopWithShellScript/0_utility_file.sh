@@ -27,9 +27,19 @@ function validateInstallation(){
     if [ $status -eq 0 ];then
         echo -e "$YellowColor $1 is already installed $ResetColor"
     else
-        echo -e "$YellowColor $1 isn't installed.$ResetColor"
+        echo -e "$YellowColor $1 isn't installed, installing....$ResetColor"
     fi
         
+}
+
+function addUser(){
+    local status=$(id $1)
+    if [ status -eq 0 ]; then
+    echo -e "$YellowColor User $1 exists $ResetColor"
+    else
+    echo -e "$YellowColor User $1 doesn't exist, creating one $ResetColor"
+    useradd $1
+    fi
 }
 
 function validateToUser(){
@@ -37,6 +47,16 @@ function validateToUser(){
     echo -e "$RedColor This user didn't have root user privilages, please try with user with root privilages $ResetColor"
     else
         echo -e "$GreenColor This user is root user, good to go $ResetColor"
+    fi
+}
+
+function verifyAndCreateDirectory(){
+    local status=$(test -d $1)
+    if [ $status -eq 0 ]; then
+    echo -e "$YellowColor directory $1 exists $ResetColor"
+    else
+    echo -e "$YellowColor directory $1 doesn't exists, creating one $ResetColor"
+    mkdir $1
     fi
 }
 
