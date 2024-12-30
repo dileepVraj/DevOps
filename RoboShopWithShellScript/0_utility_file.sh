@@ -35,10 +35,10 @@ function validateInstallation(){
 function addUser(){
     local status=$(id $1)
     if [ status -eq 0 ]; then
-    echo -e "$YellowColor User $1 exists $ResetColor"
+        echo -e "$YellowColor User $1 exists $ResetColor"
     else
-    echo -e "$YellowColor User $1 doesn't exist, creating one $ResetColor"
-    useradd $1
+        echo -e "$YellowColor User $1 doesn't exist, creating one $ResetColor"
+        useradd $1
     fi
 }
 
