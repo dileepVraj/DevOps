@@ -21,6 +21,17 @@ function validateAction(){
     fi
 }
 
+function validateInstallation(){
+    local status=$(dnf list installed $1)
+
+    if [ $status -eq 0 ];then
+        echo -e "$YellowColor $1 is already installed $ResetColor"
+    else
+        echo -e "$YellowColor $1 isn't installed.$ResetColor"
+    fi
+        
+}
+
 function validateToUser(){
     if [ $(id -u) -ne 0 ]; then
     echo -e "$RedColor This user didn't have root user privilages, please try with user with root privilages $ResetColor"

@@ -13,6 +13,7 @@ cp /home/DevOps/RoboShopWithShellScript/RepoFiles/mongo.repo /etc/yum.repos.d/mo
 validateAction $? "Copying mongo.repo file "
 
 # Installing mongodb
+validateInstallation "mongodb-org"
 dnf install mongodb-org -y >> $LogFile
 validateAction $? "Installing mongodb-org"
 
