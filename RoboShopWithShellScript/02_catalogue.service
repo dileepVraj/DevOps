@@ -24,7 +24,7 @@ validateAction $? "Installing nodejs"
 
 # Verifying and adding user.
 addUser roboshop >> $LogFile
-validateAction $? "Adding user roboshop"
+# validateAction $? "Adding user roboshop"
 
 # creating /app directory.
 verifyAndCreateDirectory "/app"
