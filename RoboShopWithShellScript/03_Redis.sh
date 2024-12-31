@@ -8,6 +8,9 @@ LogFile="/tmp/"$0-$TimeStamp.log
 # validating user.
 validateToUser
 
+# updating package manager data
+dnf update -y >> $LogFile
+
 # Installing Redis repo file as rpm.
 dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y >> $LogFile
 validateAction $? "Installing Redis repo"
