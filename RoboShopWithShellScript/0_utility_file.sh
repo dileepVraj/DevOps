@@ -22,9 +22,11 @@ function validateAction(){
 }
 
 function validate_and_install_packages(){
-    local status=$(dnf list installed $1)
+    local status_1=$(dnf list installed $1)
+    local statusCode=$($?)
 
-    if [ "$status" -eq 0 ];then
+
+    if [ "$statusCode" -eq 0 ];then
         echo -e "$YellowColor $1 is already installed $ResetColor"
     else
         echo -e "$YellowColor $1 isn't installed, installing....$ResetColor"
