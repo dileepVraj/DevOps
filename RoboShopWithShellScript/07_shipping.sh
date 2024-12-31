@@ -29,12 +29,12 @@ unzip -o /tmp/shipping.zip >> $LogFile
 validateAction $? "Unziping application code"
 
 # Installing dependencies.
-mvn clean
+mvn clean package
 validateAction $? "Installing dependencies"
 
 # Renaming shipping-1.0.jar to shipping.jar
-# mv target/shipping-1.0.jar shipping.jar
-# validateAction $? "Renaming Shipping-1.0.jar"
+mv target/shipping-1.0.jar shipping.jar
+validateAction $? "Renaming Shipping-1.0.jar"
 
 # setting up shipping.service file.
 cp "/home/DevOps/RoboShopWithShellScript/ServiceFiles/shipping.service" "/etc/systemd/system/shipping.service"
