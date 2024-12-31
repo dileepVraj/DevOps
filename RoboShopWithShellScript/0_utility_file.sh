@@ -38,7 +38,8 @@ function validate_and_install_packages(){
 
 function addUser(){
     local status=$(id $1)
-    if [ status -eq 0 ]; then
+    local statusCode=$?
+    if [ $statusCode -eq 0 ]; then
         echo -e "$YellowColor User $1 exists $ResetColor"
     else
         echo -e "$YellowColor User $1 doesn't exist, creating one $ResetColor"
