@@ -21,7 +21,7 @@ dnf install nodejs -y >> $LogFile
 validateAction $? "Installing nodejs"
 
 # Adding user.
-addUser roboshop >> $LogFile
+addUser "roboshop" >> $LogFile
 
 # Creating application directory.
 verifyAndCreateDirectory "/app"
