@@ -22,7 +22,7 @@ function validateAction(){
 }
 
 function validate_and_install_packages(){
-    local status_1=$(dnf list installed $1)
+    dnf list installed $1 >> /dev/null
     local statusCode=$?
 
 
