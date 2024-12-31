@@ -29,7 +29,7 @@ unzip -o /tmp/shipping.zip >> $LogFile
 validateAction $? "Unziping application code"
 
 # Installing dependencies.
-mvn clean >> $LogFile
+mvn clean
 validateAction $? "Installing dependencies"
 
 # Renaming shipping-1.0.jar to shipping.jar
