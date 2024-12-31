@@ -9,7 +9,7 @@ LogFile="/tmp/"$0-$TimeStamp.sh
 validateToUser
 
 # Disabling default mysql module.
-dnf disable module mysql -y >> $LogFile
+dnf module disable mysql -y >> $LogFile
 validateAction $? "Disabling default mysql module"
 
 # setting up mysql-5.7 repo file.
