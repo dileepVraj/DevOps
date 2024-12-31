@@ -18,9 +18,8 @@ dnf module enable nodejs:18 -y >> $LogFile
 validateAction $? "Enabling nodejs:18"
 
 # Install nodejs.
-validateInstallation nodejs
-dnf install nodejs -y >> $LogFile
-validateAction $? "Installing nodejs"
+validate_and_install_packages nodejs
+
 
 # Verifying and adding user.
 addUser roboshop >> $LogFile
@@ -67,9 +66,7 @@ cp "/home/DevOps/RoboShopWithShellScript/RepoFiles/mongoClient.repo" "/etc/yum.r
 validateAction $? "Mongo database client installation"
 
 # validating and istalling mongodb shell.
-validateInstallation mongodb-org-shell
-dnf install mongodb-org-shell -y >> $LogFile
-validateAction $? "Installing mongodb-shell"
+validate_and_install_packages mongodb-org-shell
 
 # Loading schema to mongodb.
 mongo --host mongodb.antman.fun </app/schema/catalogue.js
