@@ -47,7 +47,7 @@ npm install >> $LogFile
 validateAction $? "Installing npm"
 
 # We need to setup a new service in systemd so systemctl can manage this service
-cp '/root/DevOps/RoboShopWithShellScript/ServiceFiles/cart.service' '/etc/systemd/system/cart.service'
+cp '/home/DevOps/RoboShopWithShellScript/ServiceFiles/cart.service' '/etc/systemd/system/cart.service'
 validateAction $? "Copying cart.service file to /etc/systemd/system directory."
 
 # Reloading daemon to load user.service
