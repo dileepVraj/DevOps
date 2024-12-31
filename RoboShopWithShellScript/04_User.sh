@@ -31,7 +31,7 @@ curl -L -o /tmp/user.zip https://roboshop-builds.s3.amazonaws.com/user.zip >> $L
 validateAction $? "Downloading application code"
 
 # changing directory.
-cd /app
+cd "/app"
 validateAction $? "Changing directory to /app" 
 
 # Unziping application code from user.zip
