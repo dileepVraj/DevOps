@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source 0_utility_file.sh
+
 TimeStamp=$(date +%F-%H-%M-%S)
 LogFile="/tmp/"$0-$TimeStamp.log
 
