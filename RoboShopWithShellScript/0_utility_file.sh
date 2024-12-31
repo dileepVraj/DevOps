@@ -23,7 +23,7 @@ function validateAction(){
 
 function validate_and_install_packages(){
     local status_1=$(dnf list installed $1)
-    local statusCode=$($?)
+    local statusCode=$?
 
 
     if [ "$statusCode" -eq 0 ];then
