@@ -38,7 +38,7 @@ cd /app
 validateAction $? "Changing to /app directory"
 
 # unziping appliactio code in /app directory.
-unzip /tmp/catalogue.zip >> $LogFile
+unzip -o /tmp/catalogue.zip >> $LogFile
 validateAction $? " unzipping application code in /app directory "
 
 # installing node package manager.
@@ -69,7 +69,7 @@ validateAction $? "Mongo database client installation"
 validate_and_install_packages mongodb-org-shell >> $LogFile
 
 # Loading schema to mongodb.
-mongo --host mongodb.antman.fun </app/schema/catalogue.js
+mongo --host mongodb.antman.fun </app/schema/catalogue.js >> $LogFile
 validateAction $? "Loading schema to mongodb"
 
 

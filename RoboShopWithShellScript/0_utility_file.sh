@@ -58,7 +58,8 @@ function validateToUser(){
 
 function verifyAndCreateDirectory(){
     local status=$(test -d $1)
-    if [ $status -eq 0 ]; then
+    local statusCode=$?
+    if [ $statusCode -eq 0 ]; then
     echo -e "$YellowColor directory $1 exists $ResetColor"
     else
     echo -e "$YellowColor directory $1 doesn't exists, creating one $ResetColor"
