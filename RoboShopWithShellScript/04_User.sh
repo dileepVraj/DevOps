@@ -66,7 +66,7 @@ validateAction $? "Starting user.service"
 
 # To have it installed we can setup MongoDB repo and install mongodb-client
 
-cp "/home/DevOps/RoboShopWithShellScript/RepoFiles/mongoClient.repo" "/etc/yum.repos.d/mongo.repo"
+cp /home/DevOps/RoboShopWithShellScript/RepoFiles/mongoClient.repo /etc/yum.repos.d/mongo.repo
 validateAction $? "creating mongodb-client repo"
 
 # Installing mongodb-client.
