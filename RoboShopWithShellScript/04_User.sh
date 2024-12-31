@@ -43,7 +43,7 @@ npm install >> $LogFile
 validateAction $? "Installing npm"
 
 # We need to setup a new service in systemd so systemctl can manage this service
-cp '/home/DevOps/RoboShopWithShellScript/ServiceFiles/user.service' '/etc/systemd/system/user.service'
+cp '/root/DevOps/RoboShopWithShellScript/ServiceFiles/user.service' '/etc/systemd/system/user.service'
 validateAction $? "Copying user.service file to /etc/systemd/system directory."
 
 # Reloading daemon to load user.service

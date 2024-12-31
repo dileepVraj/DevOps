@@ -63,7 +63,7 @@ function verifyAndCreateDirectory(){
     echo -e "$YellowColor directory $1 exists $ResetColor"
     else
     echo -e "$YellowColor directory $1 doesn't exists, creating one $ResetColor"
-    mkdir $1
+    mkdir -p $1
     fi
 }
 
