@@ -70,7 +70,7 @@ cp "/home/DevOps/RoboShopWithShellScript/RepoFiles/mongoClient.repo" "/etc/yum.r
 validateAction $? "creating mongodb-client repo"
 
 # Installing mongodb-client.
-validate_and_install_packages "mongodb-org-shell" >> $LogFile
+dnf install mongodb-org-shell >> $LogFile
 
 # Loading schema to mongodb.
 mongo --host mongodb.antman.fun </app/schema/user.js >> $LogFile
