@@ -33,11 +33,11 @@ validateAction $? "Updating listen address from 127.0.0.1 to 0.0.0.0"
 
 # Enabling redis
 systemctl enale redis >> $LogFile
-validateAction "Enabing redis"
+validateAction $? "Enabing redis"
 
 # Starting redis
 systemctl start redis >> $LogFile
-validateAction "Starting redis"
+validateAction $? "Starting redis"
 
 
 
