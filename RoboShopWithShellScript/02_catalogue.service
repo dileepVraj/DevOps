@@ -47,7 +47,7 @@ npm install >> $LogFile
 validateAction $? "installing node package manager"
 
 # copying catalogue.service to /etc/systemd/system/ directory.
-cp "/home/DevOps/RoboShopWithShellScript/ServiceFiles/catalogue.sh" "/etc/systemd/system/catalogue.service"
+cp /home/DevOps/RoboShopWithShellScript/ServiceFiles/catalogue.service /etc/systemd/system/catalogue.service
 validateAction $? "Copying catalogue.service"
 
 # Reloading deamon.

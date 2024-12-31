@@ -21,13 +21,15 @@ function validateAction(){
     fi
 }
 
-function validateInstallation(){
+function validate_and_install_packages(){
     local status=$(dnf list installed $1)
 
-    if [ $status -eq 0 ];then
+    if [ "$status" -eq 0 ];then
         echo -e "$YellowColor $1 is already installed $ResetColor"
     else
         echo -e "$YellowColor $1 isn't installed, installing....$ResetColor"
+        dnf install $1 -y
+        validateAction $? "Installing $1"
     fi
         
 }
@@ -39,6 +41,7 @@ function addUser(){
     else
         echo -e "$YellowColor User $1 doesn't exist, creating one $ResetColor"
         useradd $1
+        validateAction $? "Adding user $1"
     fi
 }
 
