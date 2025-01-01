@@ -1,7 +1,7 @@
 #!/bin/bash
 
 source 0_utility_file.sh
-# source 06_mysql.sh
+mySqlPassword="DileepRaju1#"
 
 TimeStamp=$(date +%F-%H-%M-%S)
 LogFile="/tmp/"$0-$TimeStamp.log
@@ -50,14 +50,15 @@ systemctl start shipping
 validateAction $? "Starting shipping service"
 
 # Installing mysql client.
-validate_and_install_packages mysql -y >> $LogFile
+dnf install mysql -y >> $LogFile
+validateAction $? "Installing mysql client"
 
 # Loading cities data schema.
-mysql -h 172.31.92.125 -uroot -p DileppRaju1# </app/db/master-data.sql
+mysql -h mysql.antman.fun -uroot -p$mySqlPassword </app/db/master-data.sql
 validateAction $? "Loading cities master data"
 
 # Loading user data.
-mysql -h 172.31.92.125 -uroot -p DileppRaju1# </app/db/app-user.sql
+mysql -h mysql.antman.fun -uroot -p$mySqlPassword </app/db/app-user.sql
 validateAction $? "Loading users master data"
 
 # Restarting shipping service.

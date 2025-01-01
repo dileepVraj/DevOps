@@ -2,6 +2,8 @@
 
 source 0_utility_file.sh
 
+mySqlPassword="DileepRaju1#"
+
 TimeStamp=$(date +%F-%H-%M-%S)
 LogFile="/tmp/"$0-$TimeStamp.sh
 
@@ -31,12 +33,16 @@ validateAction $? "Enabling mysql server"
 systemctl start mysqld
 validateAction $? "Starting mysqld server"
 
-# Capturig default password.
-defaultPassword=$(cat /var/log/mysqld.log | grep 'A temporary password' | sed -n 's/.*root@localhost: //p'
-)
-validateAction $? "Capturing default mysql password"
+# # Capturig default password.
+# defaultPassword=$(cat /var/log/mysqld.log | grep 'A temporary password' | sed -n 's/.*root@localhost: //p'
+# )
+# validateAction $? "Capturing default mysql password"
 
-echo $defaultPassword
+# Setting new password for mysql.
+mysql_secure_installation --set-root-pass $mySqlPassword
 
-exit;
+# Restarting mysql.
+systemctl restart mysqld
+validateAction $? "Restarting mysql"
+
 
