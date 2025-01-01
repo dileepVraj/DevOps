@@ -39,7 +39,7 @@ validateAction $? "Capturing default mysql password"
 echo $defaultPassword
 
 # Logging to mysql server.
-bash RoboShopWithShellScript\ExtraScripts\mySqlAutologin.sh
+bash /home/DevOps/RoboShopWithShellScript\ExtraScripts\mySqlAutologin.sh
 
 mysql -u root -p$defaultPassword -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'DileppRaju1#' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 
