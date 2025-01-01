@@ -1,7 +1,7 @@
 #!/bin/bash
 
 source 0_utility_file.sh
-source 06_mysql.sh
+# source 06_mysql.sh
 
 TimeStamp=$(date +%F-%H-%M-%S)
 LogFile="/tmp/"$0-$TimeStamp.log
@@ -53,11 +53,11 @@ validateAction $? "Starting shipping service"
 validate_and_install_packages mysql -y >> $LogFile
 
 # Loading cities data schema.
-mysql -h 172.31.92.125 -uroot -p$defaultPassword </app/db/master-data.sql
+mysql -h 172.31.92.125 -uroot -p DileppRaju1# </app/db/master-data.sql
 validateAction $? "Loading cities master data"
 
 # Loading user data.
-mysql -h 172.31.92.125 -uroot -p$defaultPassword </app/db/app-user.sql
+mysql -h 172.31.92.125 -uroot -p DileppRaju1# </app/db/app-user.sql
 validateAction $? "Loading users master data"
 
 # Restarting shipping service.
