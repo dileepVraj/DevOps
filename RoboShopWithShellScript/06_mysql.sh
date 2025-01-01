@@ -40,6 +40,7 @@ echo $defaultPassword
 
 # Logging to mysql server.
 function loginToSql(){
+    #!/usr/bin/expect
 
     # Spwan the MySQL command.    
     spawn mysql -u root -p
