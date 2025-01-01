@@ -42,7 +42,7 @@ echo $defaultPassword
 function loginToSql(){
     #!/usr/bin/expect
 
-    # Spwan the MySQL command.    
+    # Spwan the MySQL command.
     spawn mysql -u root -p
 
     # wait for the password prompt.
@@ -51,16 +51,13 @@ function loginToSql(){
     # Send password followed by a new line.
     send "$defaultPassword\r"
 
-    # Hand coltrol over to the user.
+    # Hand control over to the user.
     interact
-
 }
 
 loginToSql
 
-GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'DileppRaju1#' WITH GRANT OPTION;
-
-FLUSH PRIVILEGES;
+mysql -u root -p$defaultPassword -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'DileppRaju1#' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 
 exit;
 
