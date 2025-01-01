@@ -39,7 +39,7 @@ defaultPassword=$(cat /var/log/mysqld.log | grep 'A temporary password' | sed -n
 function loginToSql(){
 
     # Spwan the MySQL command.    
-    spwan mysql -u root -p
+    spawn mysql -u root -p
 
     # wait for the password prompt.
     expect "Enter password:"
