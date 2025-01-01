@@ -34,6 +34,9 @@ validateAction $? "Starting mysqld server"
 # Capturig default password.
 defaultPassword=$(cat /var/log/mysqld.log | grep 'A temporary password' | sed -n 's/.*root@localhost: //p'
 )
+validateAction $? "Capturing default mysql password"
+
+echo $defaultPassword
 
 # Logging to mysql server.
 function loginToSql(){
