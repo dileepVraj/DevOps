@@ -8,6 +8,10 @@ LogFile="/tmp/"$0-$TimeStamp.sh
 # validating user.
 validateToUser
 
+# Install expect package.
+dnf install expect -y >> $LogFile
+validateAction $? "Installation of expect package"
+
 # Disabling default mysql module.
 dnf module disable mysql -y >> $LogFile
 validateAction $? "Disabling default mysql module"
@@ -27,7 +31,32 @@ validateAction $? "Enabling mysql server"
 systemctl start mysqld
 validateAction $? "Starting mysqld server"
 
-# Changing mysql default password.
-mysql_secure_installation --set-root-pass RoboShop@1
-validateAction $? "Changing default password"
- 
+# Capturig default password.
+defaultPassword=$(cat /var/log/mysqld.log | grep 'A temporary password' | sed -n 's/.*root@localhost: //p'
+)
+
+# Logging to mysql server.
+function loginToSql(){
+
+# Spwan the MySQL command.    
+spwan mysql -u root -p
+
+# wait for the password prompt.
+expect "Enter password:"
+
+# Send password followed by a new line.
+send "$defaultPassword\r"
+
+# Hand coltrol over to the user.
+interact
+
+}
+
+loginToSql
+
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'DileppRaju1#' WITH GRANT OPTION;
+
+FLUSH PRIVILEGES;
+
+exit;
+

@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source 0_utility_file.sh
+source 06_mysql.sh
 
 TimeStamp=$(date +%F-%H-%M-%S)
 LogFile="/tmp/"$0-$TimeStamp.log
@@ -51,9 +52,13 @@ validateAction $? "Starting shipping service"
 # Installing mysql client.
 validate_and_install_packages mysql -y >> $LogFile
 
-# Loading schema
-mysql -h mysql.antman.fun -uroot -pRoboShop@1 < /app/schema/shipping.sql >> $LogFile
-validateAction $? "Loading schema to mysql"
+# Loading cities data schema.
+mysql -h 172.31.92.125 -uroot -p$defaultPassword </app/db/master-data.sql
+validateAction $? "Loading cities master data"
+
+# Loading user data.
+mysql -h 172.31.92.125 -uroot -p$defaultPassword </app/db/app-user.sql
+validateAction $? "Loading users master data"
 
 # Restarting shipping service.
 systemctl restart shipping
