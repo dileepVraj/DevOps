@@ -32,7 +32,7 @@ sed -i 's/127.0.0.0/0.0.0.0/g' /etc/redis.conf
 validateAction $? "Updating listen address from 127.0.0.1 to 0.0.0.0"
 
 # Enabling redis
-systemctl enale redis >> $LogFile
+systemctl enable redis >> $LogFile
 validateAction $? "Enabing redis"
 
 # Starting redis
