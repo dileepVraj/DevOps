@@ -20,7 +20,7 @@ dnf module enable redis:remi-6.2 -y >> $LogFile
 validateAction $? "Enabling redis 6.2"
 
 # Installing redis.
-dnf install redis >> $LogFile
+dnf install redis -y >> $LogFile
 
 # Usually Redis opens the port only to localhost(127.0.0.1), meaning this service can be accessed by 
 # the application that is hosted on this server only. However, we need to access this service to be 
