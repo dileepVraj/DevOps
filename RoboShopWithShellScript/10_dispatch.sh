@@ -13,7 +13,7 @@ dnf install golang -y >> $LogFile
 validateAction $? "Installing go-lang"
 
 # Creatig user.
-add_user "roboshop"
+add_user roboshop
 
 # creating application directory.
 verifyAndCreateDirectory "/app"
