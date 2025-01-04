@@ -3,15 +3,18 @@
 TimeStamp=$(date +%F-%H-%M-%S)
 LogFile="/tmp/"$0-$TimeStamp.log
 
+# validating user
+validateToUser
+
 # RabbitMQ is a messaging Queue which is used by some components of the applications.
 # Configure YUM Repos from the script provided by vendor.
 
 # Installing errlang repo.
-curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash >> $LogFile
+curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash 
 validateAction $? "Downloading errlang repo"
 
 # Setupping Rabbit_mq server repository.
-curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash >> $LogFile
+curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash 
 validateAction $? "Settingup Rabbit my server repository"
 
 # Installing rabbit_mq
