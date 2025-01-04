@@ -37,7 +37,7 @@ unzip -o /tmp/web.zip >> $LogFile
 validateAction $? "Unziping front-end code."
 
 # creating reverse proxy config file.
-cp /home/DevOps/RoboShopWithShell/ServiceFiles/roboshop.conf /etc/nginx/default.d/roboshop.conf
+cp /home/DevOps/RoboShopWithShellScript/ServiceFiles/roboshop.conf /etc/nginx/default.d/roboshop.conf
 validateAction $? " creating reverse proxy "
 
 # restarting nginx.
