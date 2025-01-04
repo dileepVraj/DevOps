@@ -35,8 +35,25 @@ validateAction $? "Starting rabbit_mq server"
 # connect. Hence, we need to create one user for the application.
 
 # Creating user in rabbit_mq.
-rabbitmqctl add_user roboshop roboshop123
-validateAction $? "Creating user in rabbit_mq"
+add_user_if_not_exists() {
+    local username=$1
+    local password=$2
+
+    # Check if the user already exists
+    if rabbitmqctl list_users | grep -q "^$username[[:space:]]"; then
+        echo "User '$username' already exists. Skipping user creation."
+    else
+        echo "User '$username' does not exist. Creating user..."
+        rabbitmqctl add_user $username $password
+        if [ $? -eq 0 ]; then
+            echo "User '$username' successfully created."
+        else
+            echo "Failed to create user '$username'."
+            exit 1
+        fi
+    fi
+}
+add_user_if_not_exists "roboshop" "roboshop123"
 
 # Setting up permissions.
 rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
