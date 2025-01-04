@@ -27,7 +27,7 @@ curl -L -o /tmp/payment.zip https://roboshop-builds.s3.amazonaws.com/payment.zip
 validateAction $? "Downloading application code"
 
 # Unzipping application code.
-unzip /tmp/payment.zip >> $LogFile
+unzip -o /tmp/payment.zip >> $LogFile
 validateAction $? "unzipping application code"
 
 # Installing dependencies from requirements.txt file.
