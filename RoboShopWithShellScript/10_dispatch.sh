@@ -35,7 +35,7 @@ go build
 validateAction $? "Downloading dependencies and code build"
 
 # creating service for dispatch.
-cp /home/DevOps/RoboShopWithShell/ServiceFiles/dispatch.service /etc/systemd/system/dispatch.service
+cp /home/DevOps/RoboShopWithShellScript/ServiceFiles/dispatch.service /etc/systemd/system/dispatch.service
 validateAction $? "creating service for dispatch"
 
 # Reloading daemon.
