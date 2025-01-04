@@ -5,6 +5,9 @@ source 0_utility_file.sh
 TimeStamp=$(date +%F-%H-%M-%M)
 LogFile="/tmp/"$0-$TimeStamp.sh
 
+# validate user
+validateToUser
+
 # Installing go language.
 dnf install golang -y >> $LogFile
 validateAction $? "Installing go-lang"
