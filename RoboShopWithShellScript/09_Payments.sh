@@ -35,7 +35,7 @@ pip3.6 install -r requirements.txt >> $LogFile
 validateAction $? "Installing dependencies"
 
 # Creating service for payment.
-cp /home/DevOps/RoboShopWithShell/ServiceFiles/payments.service /etc/systemd/system/payments.service
+cp /home/DevOps/RoboShopWithShellScript/ServiceFiles/payments.service /etc/systemd/system/payments.service
 validateAction $? "Copying payment.service file and creating service"
 
 # Re-loading daemon.

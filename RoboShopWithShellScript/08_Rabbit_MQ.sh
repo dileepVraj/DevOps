@@ -12,11 +12,11 @@ validateToUser
 # Configure YUM Repos from the script provided by vendor.
 
 # Installing errlang repo.
-curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash 
+curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash >> $LogFile
 validateAction $? "Downloading errlang repo"
 
 # Setupping Rabbit_mq server repository.
-curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash 
+curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash >> $LogFile
 validateAction $? "Settingup Rabbit my server repository"
 
 # Installing rabbit_mq
