@@ -21,20 +21,39 @@ function validateAction(){
     fi
 }
 
-function validate_and_install_packages(){
+function validate_and_install_packages() {
     dnf list installed $1 >> /dev/null
     local statusCode=$?
 
-
-    if [ "$statusCode" -eq 0 ];then
+    if [ "$statusCode" -eq 0 ]; then
         echo -e "$YellowColor $1 is already installed $ResetColor"
     else
         echo -e "$YellowColor $1 isn't installed, installing....$ResetColor"
-        dnf install $1 -y
-        validateAction $? "Installing $1"
-    fi
         
+        # Background task to show progress message
+        while true; do
+            echo -ne "$YellowColor $1 is installing... $ResetColor\r"
+            sleep 2
+        done &
+        local spinner_pid=$!
+
+        # Install the package
+        dnf install $1 -y >> /dev/null
+        local installStatus=$?
+
+        # Kill the background progress message
+        kill $spinner_pid
+        wait $spinner_pid 2>/dev/null
+
+        # Validate installation
+        if [ $installStatus -eq 0 ]; then
+            echo -e "$GreenColor $1 installation completed successfully. $ResetColor"
+        else
+            echo -e "$RedColor $1 installation failed. $ResetColor"
+        fi
+    fi
 }
+
 
 function addUser(){
     id $1
