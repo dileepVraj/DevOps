@@ -8,13 +8,12 @@ LogFile="/tmp/"$0-$TimeStamp.log
 validateToUser
 
 
-# Copying mongo.repo confi to '/etc/yum.repos.d' directory.
+# Copying mongo.repo file to '/etc/yum.repos.d' directory.
 cp /home/DevOps/RoboShopWithShellScript/RepoFiles/mongo.repo /etc/yum.repos.d/mongo.repo
 validateAction $? "Copying mongo.repo file "
 
 # Installing mongodb
-validate_and_install_packages "mongodb-org"
-dnf install mongodb-org -y >> $LogFile
+validate_and_install_packages "mongodb-org" >> $LogFile
 validateAction $? "Installing mongodb-org"
 
 # Enable mongodb
