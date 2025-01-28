@@ -12,7 +12,7 @@ validateToUser
 dnf update -y >> $LogFile
 
 # Installing Redis repo file as rpm.
-dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y >> $LogFile
+dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm --nobest -y >> $LogFile
 validateAction $? "Installing Redis repo"
 
 # Enable Redis 6.2 from package streams.
