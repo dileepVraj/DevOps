@@ -31,16 +31,12 @@ curl -L -o /tmp/cart.zip https://roboshop-builds.s3.amazonaws.com/cart.zip >> $L
 validateAction $? "Downloading application code"
 
 # changing directory.
-cd "/app"
+cd /app
 validateAction $? "Changing directory to /app" 
 
 # Unziping application code from user.zip
 unzip -o /tmp/cart.zip >> $LogFile
 validateAction $? "Unziped application code."
-
-# changing directory.
-cd "/app"
-validateAction $? "Changing directory to /app" 
 
 # Installing npm.
 npm install >> $LogFile
